@@ -1,18 +1,14 @@
 package com.casestudy.demo.util
 
-import android.annotation.SuppressLint
 import android.arch.persistence.room.TypeConverter
 
-import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.TimeZone
+import java.util.*
 
 class TimestampConverter {
 
-     @SuppressLint("SimpleDateFormat")
-     val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    private val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
 
     @TypeConverter
     fun fromTimestamp(value: String?): Date? {

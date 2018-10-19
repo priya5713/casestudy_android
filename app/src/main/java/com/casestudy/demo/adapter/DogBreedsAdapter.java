@@ -8,11 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.casestudy.demo.BR;
-
-
 import com.casestudy.demo.model.DogBreed;
 import com.casestudy.demo.viewmodel.DogBreedsViewModel;
-
 import java.util.List;
 
 

@@ -9,26 +9,34 @@
         android:orientation="vertical"
         tools:context=".ui.MainActivity">
 
-
         <Button
             android:id="@+id/button_recycler_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
+            android:background="@color/colorAccent"
+            android:elevation="8dp"
+            android:padding="@dimen/padding_small"
             android:text="@string/recyclerview_using_retrofit" />
 
         <Button
             android:id="@+id/button_recycler_view_mvp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
+            android:background="@color/colorAccent"
+            android:elevation="8dp"
+            android:padding="@dimen/padding_small"
             android:text="@string/recyclerview_using_mvp" />
 
         <Button
             android:id="@+id/button_room_example"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
+            android:background="@color/colorAccent"
+            android:elevation="8dp"
+            android:padding="@dimen/padding_small"
             android:text="@string/room_database_example" />
 
 

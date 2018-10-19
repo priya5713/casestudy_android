@@ -5,11 +5,8 @@ import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
-import android.widget.TextView
 import com.casestudy.demo.R
 import com.casestudy.demo.Repository.NoteRepository
 import com.casestudy.demo.adapter.NotesListAdapter
@@ -28,10 +25,7 @@ import kotlinx.android.synthetic.main.activity_note_list.*
 
 
 class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerItemClickListener.OnRecyclerViewItemClickListener, AppConstants {
-//    private var emptyView: TextView? = null
-//    private var recyclerView: RecyclerView? = null
     private var notesListAdapter: NotesListAdapter? = null
-//    private var floatingActionButton: FloatingActionButton? = null
 
     private var noteRepository: NoteRepository? = null
 
@@ -41,14 +35,10 @@ class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerIte
 
         noteRepository = NoteRepository(applicationContext)
 
-//        recyclerView = findViewById(R.id.task_list)
         task_list.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         task_list.addOnItemTouchListener(RecyclerItemClickListener(this, this))
 
-//        floatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener(this)
-
-//        emptyView = findViewById(R.id.empty_view)
 
         updateTaskList()
     }

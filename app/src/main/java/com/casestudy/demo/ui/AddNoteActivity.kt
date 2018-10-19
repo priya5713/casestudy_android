@@ -37,21 +37,21 @@ class AddNoteActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListe
 
         mBinding.editPwd.setOnTouchListener(this)
         mBinding.checkbox.setOnCheckedChangeListener(this)
-        mBinding.toolbar?.btnClose?.setOnClickListener(this)
-        mBinding.toolbar?.btnDone?.setOnClickListener(this)
+        mBinding.toolbar.btnClose?.setOnClickListener(this)
+        mBinding.toolbar.btnDone?.setOnClickListener(this)
 
         note = intent.getSerializableExtra(INTENT_TASK) as? Note
 
         if (note == null) {
-            mBinding.toolbar?.title?.text = getString(R.string.add_task_title)
-            mBinding.toolbar?.btnClose?.setImageResource(R.drawable.btn_done)
-            mBinding.toolbar?.btnClose?.tag = R.drawable.btn_done
+            mBinding.toolbar.title?.text = getString(R.string.add_task_title)
+            mBinding.toolbar.btnClose?.setImageResource(R.drawable.btn_done)
+            mBinding.toolbar.btnClose?.tag = R.drawable.btn_done
             mBinding.textTime.text = AppUtils.getFormattedDateString(AppUtils.currentDateTime)
 
         } else {
-            mBinding.toolbar?.title?.text = getString(R.string.edit_task_title)
-            mBinding.toolbar?.btnClose?.setImageResource(R.drawable.ic_delete)
-            mBinding.toolbar?.btnClose?.tag = R.drawable.ic_delete
+            mBinding.toolbar.title?.text = getString(R.string.edit_task_title)
+            mBinding.toolbar.btnClose?.setImageResource(R.drawable.ic_delete)
+            mBinding.toolbar.btnClose?.tag = R.drawable.ic_delete
             if (note?.title != null && !note?.title!!.isEmpty()) {
                 mBinding.editTitle.setText(note?.title)
                 mBinding.editTitle.setSelection(mBinding.editTitle.text.length)

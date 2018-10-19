@@ -14,7 +14,7 @@
 
     <string name="pwd_title">Enter password</string>
     <string name="error_pwd">Incorrect password</string>
-    <string name="recyclerview_using_mvp">Recyclerview using MVP</string>
+    <string name="recyclerview_using_mvp">Recyclerview using Mvvm</string>
     <string name="room_database_example">Room DB</string>
     <string name="error_message">Something went wrong! Try again after sometime</string>
     <string name="please_check_your_internet_connectivity">Please check your internet connection</string>
@@ -22,5 +22,6 @@
     <string name="salary">Salary:</string>
     <string name="age">Age:</string>
     <string name="no_employees_found">No employees found</string>
+    <string name="no_breeds_were_returned">No breeds were returned.</string>
 
 </resources>

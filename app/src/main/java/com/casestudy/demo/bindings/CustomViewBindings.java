@@ -4,7 +4,6 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.casestudy.demo.R;
 

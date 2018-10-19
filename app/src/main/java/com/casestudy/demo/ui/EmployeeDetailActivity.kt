@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.MenuItem
 import com.casestudy.demo.BR
 import com.casestudy.demo.R
@@ -24,16 +23,13 @@ import kotlinx.android.synthetic.main.activity_employee_detail.*
 
 class EmployeeDetailActivity : AppCompatActivity() {
 
-    val employeeList: ObservableArrayList<EmployeeList> = ObservableArrayList()
+    private val employeeList: ObservableArrayList<EmployeeList> = ObservableArrayList()
     lateinit var mBinding: ActivityEmployeeDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this@EmployeeDetailActivity, R.layout.activity_employee_detail)
         rv_employee.layoutManager = LinearLayoutManager(this@EmployeeDetailActivity) as RecyclerView.LayoutManager?
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setTitle(R.string.recyclerview_using_retrofit)
+        setToolbar()
         getEmployeeData()
     }
 
@@ -44,6 +40,13 @@ class EmployeeDetailActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setTitle(R.string.recyclerview_using_retrofit)
     }
 
     private fun getEmployeeData() {

@@ -16,14 +16,12 @@ import java.util.Date
 
 object AppUtils {
 
-
     val currentDateTime: Date
         get() = Calendar.getInstance().time
 
     fun getFormattedDateString(date: Date): String? {
 
         try {
-
             var spf = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy")
             val dateString = spf.format(date)
 
@@ -60,7 +58,7 @@ object AppUtils {
     fun openKeyboard(context: Context) {
         Handler().postDelayed({
             val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
         }, 500)
     }
 

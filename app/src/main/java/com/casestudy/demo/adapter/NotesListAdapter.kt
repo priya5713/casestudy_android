@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
 import com.casestudy.demo.R
 import com.casestudy.demo.model.Note
 import com.casestudy.demo.util.AppUtils

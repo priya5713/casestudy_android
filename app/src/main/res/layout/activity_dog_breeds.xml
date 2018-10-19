@@ -4,38 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="model"
             type="com.casestudy.demo.viewmodel.DogBreedsViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DogBreedsActivity">
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listOfBreeds"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:setadapter="@{model.getAdapter()}" />
+            android:layout_height="?attr/actionBarSize" />
 
-        <ProgressBar
-            android:id="@+id/spinnerLoading"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="@{model.loading}" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".DogBreedsActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="No breeds were returned."
-            android:visibility="@{model.showEmpty}" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listOfBreeds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setadapter="@{model.getAdapter()}" />
 
-    </FrameLayout>
+            <ProgressBar
+                android:id="@+id/spinnerLoading"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="@{model.loading}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_breeds_were_returned"
+                android:visibility="@{model.showEmpty}" />
+
+        </FrameLayout>
+    </LinearLayout>
 </layout>
