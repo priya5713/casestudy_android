@@ -66,21 +66,22 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/task_list"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_large" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:visibility="gone" />
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:drawablePadding="@dimen/margin"
             android:layout_marginLeft="@dimen/margin_xlarge"
-            android:layout_marginRight="@dimen/margin_xlarge"
             android:layout_marginTop="@dimen/margin_xxxxxxxxlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
             android:drawableTop="@drawable/ic_empty"
+            android:drawablePadding="@dimen/margin"
             android:gravity="center"
             android:text="@string/empty_notes"
             android:textColor="@color/line"
@@ -95,8 +96,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/margin_xxlarge"
         android:layout_marginRight="@dimen/margin_xlarge"
+        android:layout_marginBottom="@dimen/margin_xxlarge"
         android:backgroundTint="@color/fab_color"
         android:elevation="4dp"
         android:src="@drawable/ic_add"

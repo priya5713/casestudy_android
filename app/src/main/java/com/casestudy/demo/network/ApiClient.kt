@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    private const val BASE_URL = "http://dummy.restapiexample.com/api/v1/employees#"
+    private const val BASE_URL = "http://dummy.restapiexample.com/api/v1/"
     var retrofit: Retrofit? = null
 
     // add logging interceptor if DEBUG build

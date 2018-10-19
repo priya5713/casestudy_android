@@ -1,5 +1,6 @@
 package com.casestudy.demo.util
 
+import android.annotation.SuppressLint
 import android.arch.persistence.room.TypeConverter
 
 import java.text.DateFormat
@@ -10,6 +11,7 @@ import java.util.TimeZone
 
 class TimestampConverter {
 
+     @SuppressLint("SimpleDateFormat")
      val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     @TypeConverter

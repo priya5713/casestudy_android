@@ -3,6 +3,7 @@
     package="com.casestudy.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +33,11 @@
             android:name=".ui.PwdActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.EmployeeDetailActivity"></activity>
+        <activity
+            android:name=".ui.EmployeeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ui.DogsBreedsActivity"></activity>
     </application>
 
 </manifest>

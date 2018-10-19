@@ -1,7 +1,6 @@
 package com.casestudy.demo.ui
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.casestudy.demo.R
@@ -18,14 +17,10 @@ class MainActivity : AppCompatActivity() {
         }
         button_room_example.setOnClickListener {
             startActivity(Intent(this@MainActivity, NotesListActivity::class.java))
+            finish()
         }
-//        mainActivityBinding.buttonRecyclerView.setOnClickListener {
-//
-//        }
-//        mainActivityBinding.buttonRoomExample.setOnClickListener {
-//
-//        }
-
-
+        button_recycler_view_mvp.setOnClickListener {
+            startActivity(Intent(this@MainActivity, DogsBreedsActivity::class.java))
+        }
     }
 }

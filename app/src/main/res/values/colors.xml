@@ -2,8 +2,8 @@
 <resources>
 
     <color name="colorPrimary">#ebebeb</color>
-    <color name="colorPrimaryDark">#ebebeb</color>
-    <color name="colorAccent">#ebebeb</color>
+    <color name="colorPrimaryDark">#fbe1dbd8</color>
+    <color name="colorAccent">#FBE1DBD8</color>
 
     <color name="bg_layout">#ebebeb</color>
     <color name="layout_title">#212121</color>

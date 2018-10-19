@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoomDbExample</string>
+    <string name="app_name">Case Study</string>
     <string name="task_title">My Notes</string>
     <string name="add_task_title">Add new note</string>
     <string name="edit_task_title">Edit note</string>
@@ -16,5 +16,11 @@
     <string name="error_pwd">Incorrect password</string>
     <string name="recyclerview_using_mvp">Recyclerview using MVP</string>
     <string name="room_database_example">Room DB</string>
+    <string name="error_message">Something went wrong! Try again after sometime</string>
+    <string name="please_check_your_internet_connectivity">Please check your internet connection</string>
+    <string name="recyclerview_using_retrofit">Recyclerview using Retrofit</string>
+    <string name="salary">Salary:</string>
+    <string name="age">Age:</string>
+    <string name="no_employees_found">No employees found</string>
 
 </resources>

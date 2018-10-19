@@ -24,13 +24,14 @@ import com.casestudy.demo.util.AppConstants.Companion.INTENT_TASK
 import com.casestudy.demo.util.AppConstants.Companion.INTENT_TITLE
 import com.casestudy.demo.util.NavigatorUtils
 import com.casestudy.demo.util.RecyclerItemClickListener
+import kotlinx.android.synthetic.main.activity_note_list.*
 
 
 class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerItemClickListener.OnRecyclerViewItemClickListener, AppConstants {
-    private var emptyView: TextView? = null
-    private var recyclerView: RecyclerView? = null
+//    private var emptyView: TextView? = null
+//    private var recyclerView: RecyclerView? = null
     private var notesListAdapter: NotesListAdapter? = null
-    private var floatingActionButton: FloatingActionButton? = null
+//    private var floatingActionButton: FloatingActionButton? = null
 
     private var noteRepository: NoteRepository? = null
 
@@ -40,14 +41,14 @@ class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerIte
 
         noteRepository = NoteRepository(applicationContext)
 
-        recyclerView = findViewById(R.id.task_list)
-        recyclerView!!.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView!!.addOnItemTouchListener(RecyclerItemClickListener(this, this))
+//        recyclerView = findViewById(R.id.task_list)
+        task_list.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        task_list.addOnItemTouchListener(RecyclerItemClickListener(this, this))
 
-        floatingActionButton = findViewById(R.id.fab)
-        floatingActionButton!!.setOnClickListener(this)
+//        floatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener(this)
 
-        emptyView = findViewById(R.id.empty_view)
+//        emptyView = findViewById(R.id.empty_view)
 
         updateTaskList()
     }
@@ -55,23 +56,25 @@ class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerIte
 
     private fun updateTaskList() {
         noteRepository?.tasks?.observe(this, Observer<List<Note>> { notes ->
-            if (notes!!.size > 0) {
-                emptyView!!.visibility = View.GONE
-                recyclerView!!.visibility = View.VISIBLE
-                if (notesListAdapter == null) {
-                    notesListAdapter = NotesListAdapter(notes as MutableList<Note>)
-                    recyclerView!!.adapter = notesListAdapter
+            if (notes != null) {
+                if (notes.isNotEmpty()) {
+                    empty_view.visibility = View.GONE
+                    task_list.visibility = View.VISIBLE
+                    if (notesListAdapter == null) {
+                        notesListAdapter = NotesListAdapter(notes as MutableList<Note>)
+                        task_list.adapter = notesListAdapter
 
+                    } else
+                        notesListAdapter?.addTasks(notes)
                 } else
-                    notesListAdapter!!.addTasks(notes)
-            } else
-                updateEmptyView()
+                    updateEmptyView()
+            }
         })
     }
 
     private fun updateEmptyView() {
-        emptyView!!.visibility = View.VISIBLE
-        recyclerView!!.visibility = View.GONE
+        empty_view.visibility = View.VISIBLE
+        task_list.visibility = View.GONE
     }
 
 
@@ -88,12 +91,14 @@ class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerIte
      * update/delete existing note
      * */
     override fun onItemClick(parentView: View, childView: View, position: Int) {
-        val note = notesListAdapter!!.getItem(position)
-        if (note.isEncrypt) {
-            NavigatorUtils.redirectToPwdScreen(this, note)
+        val note = notesListAdapter?.getItem(position)
+        if (note != null) {
+            if (note.isEncrypt) {
+                NavigatorUtils.redirectToPwdScreen(this, note)
 
-        } else {
-            NavigatorUtils.redirectToEditTaskScreen(this, note)
+            } else {
+                NavigatorUtils.redirectToEditTaskScreen(this, note)
+            }
         }
     }
 
@@ -102,19 +107,21 @@ class NotesListActivity : AppCompatActivity(), View.OnClickListener, RecyclerIte
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 
-            if (data!!.hasExtra(INTENT_TASK)) {
-                if (data.hasExtra(INTENT_DELETE)) {
-                    noteRepository!!.deleteTask(data.getSerializableExtra(INTENT_TASK) as Note)
+            if (data != null) {
+                if (data.hasExtra(INTENT_TASK)) {
+                    if (data.hasExtra(INTENT_DELETE)) {
+                        noteRepository?.deleteTask(data.getSerializableExtra(INTENT_TASK) as Note)
 
+                    } else {
+                        noteRepository?.updateTask(data.getSerializableExtra(INTENT_TASK) as Note)
+                    }
                 } else {
-                    noteRepository!!.updateTask(data.getSerializableExtra(INTENT_TASK) as Note)
+                    val title = data.getStringExtra(INTENT_TITLE)
+                    val desc = data.getStringExtra(INTENT_DESC)
+                    val pwd = data.getStringExtra(INTENT_PWD)
+                    val encrypt = data.getBooleanExtra(INTENT_ENCRYPT, false)
+                    noteRepository?.insertTask(title, desc, encrypt, pwd)
                 }
-            } else {
-                val title = data.getStringExtra(INTENT_TITLE)
-                val desc = data.getStringExtra(INTENT_DESC)
-                val pwd = data.getStringExtra(INTENT_PWD)
-                val encrypt = data.getBooleanExtra(INTENT_ENCRYPT, false)
-                noteRepository!!.insertTask(title, desc, encrypt, pwd)
             }
             updateTaskList()
         }
